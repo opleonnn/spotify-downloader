@@ -127,6 +127,7 @@ def _parse_path_template(path_template, song_object, output_format, short=False)
     converted_file_name = path_template
 
     converted_file_name = converted_file_name.format(
+        track_id=_sanitize_filename(song_object.track_id),
         artist=_sanitize_filename(song_object.contributing_artists[0]),
         title=_sanitize_filename(song_object.song_name),
         album=_sanitize_filename(song_object.album_name),
