@@ -39,6 +39,14 @@ class SongObject:
         return self._youtube_link
 
     @property
+    def track_id(self) -> str:
+        """
+        returns songs's track id.
+        """
+
+        return self._raw_track_meta["id"]
+
+    @property
     def song_name(self) -> str:
         """
         returns songs's name.
