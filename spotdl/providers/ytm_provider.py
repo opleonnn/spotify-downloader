@@ -162,6 +162,27 @@ def _order_ytm_results(
                 artist_match_number += _match_percentage(
                     str(unidecode(artist.lower())), unidecode(result["artist"].lower())
                 )
+
+            result_name = str(unidecode(result["name"].lower()))
+            if artist_match_number / len(song_artists) < 70 and "feat. " in result_name:
+                name_words = result_name.split("feat. ")
+                if len(name_words) > 1:
+                    result_artists_str = name_words[1].replace(" & ", ", ")
+                    if result_artists_str[-1] == ")":
+                        result_artists_str = result_artists_str[:-1]
+                    result_artists = result_artists_str.split(", ")
+                    temp_artist = unidecode(result["artist"].lower())
+                    if temp_artist not in result_artists:
+                        result_artists.append(temp_artist)
+
+                    artist_match_number = 0
+                    for artist in song_artists:
+                        match_numbers: list[float] = []
+                        for index, result_artist in enumerate(result_artists):
+                            match_numbers.append(_match_percentage(
+                                str(unidecode(artist.lower())), result_artist
+                            ))
+                        artist_match_number += max(match_numbers)
         else:
             # ! i.e if video
             for artist in song_artists:
