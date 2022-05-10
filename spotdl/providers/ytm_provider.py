@@ -178,7 +178,7 @@ def _order_ytm_results(
                     artist_match_number = 0
                     for artist in song_artists:
                         match_numbers: list[float] = []
-                        for index, result_artist in enumerate(result_artists):
+                        for result_artist in result_artists:
                             match_numbers.append(_match_percentage(
                                 str(unidecode(artist.lower())), result_artist
                             ))
