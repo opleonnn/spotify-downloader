@@ -162,7 +162,7 @@ def _order_ytm_results(
                 artist_match_number += _match_percentage(
                     str(unidecode(artist.lower())), unidecode(result["artist"].lower())
                 )
-            
+
             result_name = str(unidecode(result["name"].lower()))
             if artist_match_number / len(song_artists) < 70 and "feat. " in result_name:
                 name_words = result_name.split("feat. ")
