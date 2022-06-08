@@ -1,6 +1,7 @@
 import concurrent.futures
 
 from pathlib import Path
+from random import sample
 from typing import Dict, List
 import platform
 
@@ -318,6 +319,9 @@ def from_playlist(
         and track.get("track") is not None
         and track["track"].get("id") is not None
     ]
+
+    if len(playlist_tracks) > 50:
+        playlist_tracks = sample(playlist_tracks, 50)
 
     def get_song(track):
         try:
