@@ -320,8 +320,8 @@ def from_playlist(
         and track["track"].get("id") is not None
     ]
 
-    if len(playlist_tracks) > 50:
-        playlist_tracks = sample(playlist_tracks, 50)
+    if len(playlist_tracks) > 60:
+        playlist_tracks = sample(playlist_tracks, 60)
 
     def get_song(track):
         try:
