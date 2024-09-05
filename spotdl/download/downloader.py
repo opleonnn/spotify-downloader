@@ -221,11 +221,11 @@ class Downloader:
         proxy = self.settings["proxy"]
         proxies = None
         if proxy:
-            if not re.match(
-                pattern=r"^(http|https):\/\/(?:(\w+)(?::(\w+))?@)?((?:\d{1,3})(?:\.\d{1,3}){3})(?::(\d{1,5}))?$",  # pylint: disable=C0301
-                string=proxy,
-            ):
-                raise DownloaderError(f"Invalid proxy server: {proxy}")
+            # if not re.match(
+            #     pattern=r"^(http|https):\/\/(?:(\w+)(?::(\w+))?@)?((?:\d{1,3})(?:\.\d{1,3}){3})(?::(\d{1,5}))?$",  # pylint: disable=C0301
+            #     string=proxy,
+            # ):
+            #     raise DownloaderError(f"Invalid proxy server: {proxy}")
             proxies = {"http": proxy, "https": proxy}
             logger.info("Setting proxy server: %s", proxy)
 
